@@ -14,9 +14,26 @@ const AuctionChart = ({ ogTrailblazers, totalBids, participants }) => {
           </div>
           
           {/* OG Trailblazer */}
-          <div className="flex items-center gap-2 px-3 py-1.5 bg-purple-50 rounded-full border border-purple-200">
+          <div 
+            className="relative flex items-center gap-2 px-3 py-1.5 bg-purple-50 rounded-full border border-purple-200 cursor-help"
+            onMouseEnter={() => setShowOgTooltip(true)}
+            onMouseLeave={() => setShowOgTooltip(false)}
+          >
             <span className="text-xs font-semibold text-purple-600">OG TRAILBLAZER</span>
             <span className="text-sm font-bold text-purple-700">{ogTrailblazers}/100</span>
+            
+            {/* Info icon */}
+            <svg className="w-3.5 h-3.5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            
+            {/* Tooltip */}
+            {showOgTooltip && (
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-4 py-2.5 bg-gray-900 text-white text-xs rounded-xl whitespace-nowrap z-10 shadow-lg max-w-xs">
+                First 100 auction participants get OG Trailblazer status with exclusive benefits
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-[-4px] border-4 border-transparent border-b-gray-900"></div>
+              </div>
+            )}
           </div>
         </div>
         
