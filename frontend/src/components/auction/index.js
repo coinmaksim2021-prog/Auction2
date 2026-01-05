@@ -9,4 +9,4 @@ export { default as RecentActivity } from './RecentActivity';
 export { default as HowAuctionWorks } from './HowAuctionWorks';
 export { default as RaritySection } from './RaritySection';
 export { default as CollectionOverview } from './CollectionOverview';
-export { CosmicBadgesModal, XPProgressionModal, cosmicBadges, xpLevels } from './FutureModals';
+
