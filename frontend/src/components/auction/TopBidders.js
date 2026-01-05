@@ -14,7 +14,10 @@ const TopBidders = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
         </svg>
         Top Bidders
-        <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full ml-auto">Hidden Rankings</span>
+        <div className="flex items-center gap-2 px-2 py-1 bg-emerald-50 rounded-full ml-auto">
+          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+          <span className="text-xs font-medium text-emerald-600">Hidden Rankings</span>
+        </div>
       </h3>
       
       <div className="flex flex-wrap gap-2">
