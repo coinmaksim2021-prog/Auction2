@@ -44,7 +44,7 @@ const AuctionHeroSection = ({ timeLeft, totalBids, participants, onPlaceBid }) =
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex items-center justify-center gap-4 mb-12">
+        <div className="flex items-center justify-center gap-4">
           <button 
             onClick={onPlaceBid}
             className="bg-gradient-to-r from-gray-800 to-gray-900 text-white px-8 py-4 rounded-xl font-semibold text-base hover:from-gray-900 hover:to-black shadow-lg hover:shadow-xl transition-all"
@@ -57,22 +57,6 @@ const AuctionHeroSection = ({ timeLeft, totalBids, participants, onPlaceBid }) =
           >
             How It Works
           </a>
-        </div>
-
-        {/* Stats Cards */}
-        <div className="grid grid-cols-3 gap-6 max-w-3xl mx-auto">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-gray-100">
-            <div className="text-3xl font-bold text-gray-900 mb-1">{totalBids}</div>
-            <p className="text-sm text-gray-500">Total Bids</p>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-gray-100">
-            <div className="text-3xl font-bold text-gray-900 mb-1">{participants}</div>
-            <p className="text-sm text-gray-500">Participants</p>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-sm border border-gray-100">
-            <div className="text-3xl font-bold text-emerald-600 mb-1">100 USDC</div>
-            <p className="text-sm text-gray-500">Minimum Bid</p>
-          </div>
         </div>
       </div>
     </section>
