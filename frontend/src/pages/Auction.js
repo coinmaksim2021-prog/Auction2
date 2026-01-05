@@ -148,6 +148,9 @@ function Auction() {
         {/* NFT Utility Section */}
         <NFTUtilitySection />
 
+        {/* User Evolution Section */}
+        <UserEvolutionSection />
+
         {/* FOMO Universe Section */}
         <FOMOUniverseSection />
       </div>
