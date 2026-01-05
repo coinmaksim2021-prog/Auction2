@@ -54,6 +54,17 @@ input[type="number"] {
 }
 
 .pause-animation:hover {
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
   animation-play-state: paused;
 }
 
