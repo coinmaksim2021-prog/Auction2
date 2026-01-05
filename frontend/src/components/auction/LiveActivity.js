@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
   return (
-    <div className="card pb-8">
+    <div className="card mb-12">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
