@@ -23,11 +23,7 @@ const TopBidders = () => {
       <div className="flex flex-wrap gap-2">
         {topCategories.map((category, i) => (
           <div key={i} className="group relative">
-            <div className={`px-3 py-2 rounded-full border text-sm font-medium cursor-help transition-all
-              ${category.badge === 'og' 
-                ? 'bg-purple-50 border-purple-200 text-purple-700' 
-                : 'bg-gray-50 border-gray-200 text-gray-700'}`}
-            >
+            <div className="px-3 py-2 rounded-full border text-sm font-medium cursor-help transition-all bg-gray-50 border-gray-200 text-gray-700">
               {category.title}
               <span className="ml-1 text-xs opacity-60">{category.subtitle}</span>
             </div>
