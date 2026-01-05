@@ -526,21 +526,20 @@ const BidModal = ({ bidAmount, setBidAmount, onClose, onConfirm }) => {
   );
 };
 
-// NFT Box Collection Section Component with Infinite Scroll
+// NFT Box Collection Section Component with Manual Scroll
 const NFTBoxCollectionSection = () => {
   const nftBoxes = [
-    { id: '#001', rarity: 'Legendary', price: '2.5 ETH', image: '🎁' },
-    { id: '#024', rarity: 'Epic', price: '1.8 ETH', image: '🎁' },
-    { id: '#067', rarity: 'Rare', price: '1.2 ETH', image: '🎁' },
-    { id: '#135', rarity: 'Uncommon', price: '0.8 ETH', image: '🎁' },
-    { id: '#248', rarity: 'Epic', price: '1.9 ETH', image: '🎁' },
-    { id: '#312', rarity: 'Rare', price: '1.1 ETH', image: '🎁' },
-    { id: '#456', rarity: 'Legendary', price: '2.8 ETH', image: '🎁' },
-    { id: '#523', rarity: 'Uncommon', price: '0.7 ETH', image: '🎁' }
+    { id: '#001', rarity: 'Legendary', floorPrice: '2.5', usd: '$7,800' },
+    { id: '#024', rarity: 'Epic', floorPrice: '1.8', usd: '$5,616' },
+    { id: '#067', rarity: 'Rare', floorPrice: '1.2', usd: '$3,744' },
+    { id: '#135', rarity: 'Uncommon', floorPrice: '0.8', usd: '$2,496' },
+    { id: '#248', rarity: 'Epic', floorPrice: '1.9', usd: '$5,928' },
+    { id: '#312', rarity: 'Rare', floorPrice: '1.1', usd: '$3,432' },
+    { id: '#456', rarity: 'Legendary', floorPrice: '2.8', usd: '$8,736' },
+    { id: '#523', rarity: 'Uncommon', floorPrice: '0.7', usd: '$2,184' },
+    { id: '#089', rarity: 'Rare', floorPrice: '1.3', usd: '$4,056' },
+    { id: '#176', rarity: 'Epic', floorPrice: '2.0', usd: '$6,240' }
   ];
-
-  // Duplicate для бесконечного скролла
-  const duplicatedBoxes = [...nftBoxes, ...nftBoxes];
 
   const getRarityColor = (rarity) => {
     switch (rarity) {
@@ -561,52 +560,46 @@ const NFTBoxCollectionSection = () => {
           <p className="text-sm text-gray-500">Previous collection now available on the open market</p>
         </div>
 
-        {/* Infinite Scroll Container */}
-        <div className="relative overflow-hidden">
-          <div className="flex animate-scroll-infinite hover:pause-animation">
-            {duplicatedBoxes.map((box, index) => (
+        {/* Manual Scroll Container */}
+        <div className="relative overflow-x-auto pb-4 scrollbar-hide">
+          <div className="flex gap-4 px-2">
+            {nftBoxes.map((box, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 w-64 mx-3"
+                className="flex-shrink-0 w-56"
               >
-                <div className="card hover:shadow-xl transition-all duration-300 cursor-pointer group">
-                  {/* NFT Box Image */}
-                  <div className={`relative h-64 bg-gradient-to-br ${getRarityColor(box.rarity)} rounded-t-2xl flex items-center justify-center overflow-hidden`}>
-                    {/* Rarity Badge */}
-                    <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
+                <div className="card p-0 hover:shadow-xl transition-all duration-300 cursor-pointer group overflow-hidden">
+                  {/* NFT Image */}
+                  <div className={`relative h-56 bg-gradient-to-br ${getRarityColor(box.rarity)} flex items-center justify-center`}>
+                    {/* Image Placeholder */}
+                    <div className="w-full h-full bg-gray-800/20 flex items-center justify-center">
+                      <svg className="w-24 h-24 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    
+                    {/* Rarity Badge - RIGHT TOP */}
+                    <div className="absolute top-3 right-3 px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-lg">
                       <span className="text-xs font-bold text-gray-900">{box.rarity}</span>
                     </div>
                     
-                    {/* Box ID */}
-                    <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/50 backdrop-blur-sm rounded-lg">
+                    {/* Box ID - LEFT BOTTOM */}
+                    <div className="absolute bottom-3 left-3 px-2 py-0.5 bg-black/60 backdrop-blur-sm rounded">
                       <span className="text-xs font-mono font-semibold text-white">{box.id}</span>
-                    </div>
-                    
-                    {/* Box Icon */}
-                    <div className="text-8xl group-hover:scale-110 transition-transform duration-300">
-                      {box.image}
                     </div>
                   </div>
                   
-                  {/* Info Section */}
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-sm">
-                        F
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900">FOMO Box</p>
-                        <p className="text-xs text-gray-500">Pre-Mint Collection</p>
-                      </div>
-                    </div>
-                    
+                  {/* Info Section - Compact */}
+                  <div className="p-3">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-lg font-bold text-gray-900">{box.price}</p>
-                        <p className="text-xs text-gray-500">~$7,800</p>
+                        <p className="text-sm text-gray-500 mb-0.5">Floor Price</p>
+                        <p className="text-lg font-bold text-gray-900">
+                          {box.floorPrice} ETH <span className="text-xs text-gray-500 font-normal">({box.usd})</span>
+                        </p>
                       </div>
-                      <button className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
-                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <button className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+                        <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
