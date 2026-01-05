@@ -28,7 +28,7 @@ const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
         </div>
       </div>
       
-      <p className="text-xs text-gray-500 italic">
+      <p className="text-xs text-gray-500">
         Real-time metrics. Updated every 30s.
       </p>
     </div>
