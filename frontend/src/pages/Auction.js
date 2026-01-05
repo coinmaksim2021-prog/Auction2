@@ -16,10 +16,10 @@ import {
 function Auction() {
   // Timer state
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 3,
-    seconds: 45
+    days: 2,
+    hours: 15,
+    minutes: 43,
+    seconds: 25
   });
 
   // Auction stats (static for now - will be dynamic later)
