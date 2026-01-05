@@ -528,27 +528,31 @@ const BidModal = ({ bidAmount, setBidAmount, onClose, onConfirm }) => {
 
 // NFT Box Collection Section Component with Manual Scroll
 const NFTBoxCollectionSection = () => {
+  // Данные NFT боксов (как в Holdings)
   const nftBoxes = [
-    { id: '#001', rarity: 'Legendary', floorPrice: '2.5', usd: '$7,800' },
-    { id: '#024', rarity: 'Epic', floorPrice: '1.8', usd: '$5,616' },
-    { id: '#067', rarity: 'Rare', floorPrice: '1.2', usd: '$3,744' },
-    { id: '#135', rarity: 'Uncommon', floorPrice: '0.8', usd: '$2,496' },
-    { id: '#248', rarity: 'Epic', floorPrice: '1.9', usd: '$5,928' },
-    { id: '#312', rarity: 'Rare', floorPrice: '1.1', usd: '$3,432' },
-    { id: '#456', rarity: 'Legendary', floorPrice: '2.8', usd: '$8,736' },
-    { id: '#523', rarity: 'Uncommon', floorPrice: '0.7', usd: '$2,184' },
-    { id: '#089', rarity: 'Rare', floorPrice: '1.3', usd: '$4,056' },
-    { id: '#176', rarity: 'Epic', floorPrice: '2.0', usd: '$6,240' }
+    { token_id: 124, price_eth: 1.12, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 135, price_eth: 1.22, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 156, price_eth: 1.18, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 201, price_eth: 2.45, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 89, price_eth: 1.35, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 312, price_eth: 0.95, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 7, price_eth: 3.20, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 456, price_eth: 1.50, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 523, price_eth: 0.88, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
+    { token_id: 67, price_eth: 1.75, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' }
   ];
 
-  const getRarityColor = (rarity) => {
-    switch (rarity) {
-      case 'Legendary': return 'from-orange-400 to-orange-600';
-      case 'Epic': return 'from-purple-400 to-purple-600';
-      case 'Rare': return 'from-blue-400 to-blue-600';
-      case 'Uncommon': return 'from-green-400 to-green-600';
-      default: return 'from-gray-400 to-gray-600';
-    }
+  // Функция getRarity точно как в nftUtils.js
+  const getRarity = (tokenId) => {
+    const rarities = [
+      { name: 'Common', color: 'text-gray-600', bg: 'bg-gray-100' },
+      { name: 'Uncommon', color: 'text-green-600', bg: 'bg-green-50' },
+      { name: 'Rare', color: 'text-blue-600', bg: 'bg-blue-50' },
+      { name: 'Epic', color: 'text-purple-600', bg: 'bg-purple-50' },
+      { name: 'Legendary', color: 'text-orange-600', bg: 'bg-orange-50' }
+    ];
+    const index = tokenId % 100 < 5 ? 4 : tokenId % 100 < 15 ? 3 : tokenId % 100 < 35 ? 2 : tokenId % 100 < 60 ? 1 : 0;
+    return rarities[index];
   };
 
   return (
@@ -563,51 +567,61 @@ const NFTBoxCollectionSection = () => {
         {/* Manual Scroll Container */}
         <div className="relative overflow-x-auto pb-4 scrollbar-hide">
           <div className="flex gap-4 px-2">
-            {nftBoxes.map((box, index) => (
-              <div 
-                key={index}
-                className="flex-shrink-0 w-56"
-              >
-                <div className="card p-0 hover:shadow-xl transition-all duration-300 cursor-pointer group overflow-hidden">
-                  {/* NFT Image */}
-                  <div className={`relative h-56 bg-gradient-to-br ${getRarityColor(box.rarity)} flex items-center justify-center`}>
-                    {/* Image Placeholder */}
-                    <div className="w-full h-full bg-gray-800/20 flex items-center justify-center">
-                      <svg className="w-24 h-24 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
+            {nftBoxes.map((nft) => {
+              const rarity = getRarity(nft.token_id);
+              return (
+                <div 
+                  key={nft.token_id}
+                  className="flex-shrink-0 w-48 group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg"
+                  style={{ 
+                    background: '#F5FBFD',
+                    boxShadow: '2px 2px 8px 2px rgba(0, 5, 48, 0.08)'
+                  }}
+                >
+                  {/* Image container with badges */}
+                  <div className="relative">
+                    <img
+                      src={nft.image}
+                      alt={`NFT Box #${nft.token_id}`}
+                      className="w-full aspect-square object-cover rounded-t-2xl"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/300x300/000000/00FF87?text=F';
+                      }}
+                    />
+                    {/* Rarity badge - TOP RIGHT */}
+                    <div className={`absolute top-2 right-2 ${rarity.bg} backdrop-blur-sm px-2.5 py-1 rounded-full shadow-sm`}>
+                      <span className={`text-xs font-semibold ${rarity.color}`}>{rarity.name}</span>
                     </div>
-                    
-                    {/* Rarity Badge - RIGHT TOP */}
-                    <div className="absolute top-3 right-3 px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-lg">
-                      <span className="text-xs font-bold text-gray-900">{box.rarity}</span>
-                    </div>
-                    
-                    {/* Box ID - LEFT BOTTOM */}
-                    <div className="absolute bottom-3 left-3 px-2 py-0.5 bg-black/60 backdrop-blur-sm rounded">
-                      <span className="text-xs font-mono font-semibold text-white">{box.id}</span>
+                    {/* Token ID badge - BOTTOM LEFT */}
+                    <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-sm">
+                      <span className="text-xs font-bold text-gray-900">#{nft.token_id}</span>
                     </div>
                   </div>
                   
-                  {/* Info Section - Compact */}
-                  <div className="p-3">
+                  {/* Card info - точно как в Holdings */}
+                  <div className="p-3 bg-white">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-5 h-5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center">
+                        <span className="text-[8px] font-bold text-white">F</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-semibold text-gray-900 truncate">NFT Box</p>
+                        <p className="text-[10px] text-gray-500">Collection</p>
+                      </div>
+                    </div>
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-gray-500 mb-0.5">Floor Price</p>
-                        <p className="text-lg font-bold text-gray-900">
-                          {box.floorPrice} ETH <span className="text-xs text-gray-500 font-normal">({box.usd})</span>
-                        </p>
+                        <p className="text-sm font-bold text-gray-900">{nft.price_eth} ETH</p>
+                        <p className="text-[10px] text-gray-500">~${(nft.price_eth * 3200).toFixed(0)}</p>
                       </div>
-                      <button className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-                        <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
+                      <svg className="w-4 h-4 text-gray-400 group-hover:text-gray-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -616,12 +630,17 @@ const NFTBoxCollectionSection = () => {
           <p className="text-sm text-gray-600 mb-3">
             These boxes can be fused together to mint NFTs from the main collection
           </p>
-          <button className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-black transition-all shadow-lg">
+          <a 
+            href="https://www.fomo.cx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-black transition-all shadow-lg"
+          >
             View Full Collection
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
-          </button>
+          </a>
         </div>
       </div>
     </section>
