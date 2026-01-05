@@ -530,16 +530,16 @@ const BidModal = ({ bidAmount, setBidAmount, onClose, onConfirm }) => {
 const NFTBoxCollectionSection = () => {
   // Данные NFT боксов (как в Holdings)
   const nftBoxes = [
-    { token_id: 124, price_eth: 1.12, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 135, price_eth: 1.22, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 156, price_eth: 1.18, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 201, price_eth: 2.45, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 89, price_eth: 1.35, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 312, price_eth: 0.95, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 7, price_eth: 3.20, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 456, price_eth: 1.50, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 523, price_eth: 0.88, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' },
-    { token_id: 67, price_eth: 1.75, image: 'https://via.placeholder.com/300x300/00FF87/000000?text=F' }
+    { token_id: 124, price_eth: 1.12, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 135, price_eth: 1.22, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 156, price_eth: 1.18, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 201, price_eth: 2.45, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 89, price_eth: 1.35, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 312, price_eth: 0.95, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 7, price_eth: 3.20, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 456, price_eth: 1.50, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 523, price_eth: 0.88, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' },
+    { token_id: 67, price_eth: 1.75, image: 'https://placehold.co/300x300/10b981/ffffff?text=F' }
   ];
 
   // Функция getRarity точно как в nftUtils.js
