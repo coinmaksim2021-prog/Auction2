@@ -1,11 +1,11 @@
 import React from 'react';
 
 const mainCollectionRarity = [
-  { name: 'FOMO GOLD', chance: 0.2, count: 9, intensity: 'from-purple-300 to-purple-400' },
-  { name: 'Legendary', chance: 1, count: 44, intensity: 'from-purple-400 to-purple-500' },
-  { name: 'Epic', chance: 10, count: 444, intensity: 'from-purple-500 to-purple-600' },
-  { name: 'Rare', chance: 25, count: 1111, intensity: 'from-purple-600 to-purple-700' },
-  { name: 'Uncommon', chance: 63.8, count: 2836, intensity: 'from-purple-700 to-purple-800' }
+  { name: 'FOMO GOLD', chance: 0.2, count: 9, intensity: 'from-orange-300 to-orange-400' },
+  { name: 'Legendary', chance: 1, count: 44, intensity: 'from-orange-400 to-orange-500' },
+  { name: 'Epic', chance: 10, count: 444, intensity: 'from-orange-500 to-orange-600' },
+  { name: 'Rare', chance: 25, count: 1111, intensity: 'from-orange-600 to-orange-700' },
+  { name: 'Uncommon', chance: 63.8, count: 2836, intensity: 'from-orange-700 to-orange-800' }
 ];
 
 const bidRanges = [
