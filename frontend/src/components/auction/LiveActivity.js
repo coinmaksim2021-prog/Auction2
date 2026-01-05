@@ -3,27 +3,29 @@ import React, { useState } from 'react';
 const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
   return (
     <div className="card">
-      <div className="flex items-center gap-2 mb-3">
-        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-        <h3 className="text-lg font-semibold text-gray-900">Live Activity</h3>
-      </div>
-      
-      <div className="flex items-center gap-4">
-        <ActivityItem 
-          icon="users"
-          label="Users online now"
-          value={onlineUsers}
-        />
-        <ActivityItem 
-          icon="fire"
-          label="Bids in the last hour"
-          value={bidsLastHour}
-        />
-        <ActivityItem 
-          icon="user-plus"
-          label="New bidders joined"
-          value={8}
-        />
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+          <h3 className="text-lg font-semibold text-gray-900">Live Activity</h3>
+        </div>
+        
+        <div className="flex items-center gap-4">
+          <ActivityItem 
+            icon="users"
+            label="Users online now"
+            value={onlineUsers}
+          />
+          <ActivityItem 
+            icon="fire"
+            label="Bids in the last hour"
+            value={bidsLastHour}
+          />
+          <ActivityItem 
+            icon="user-plus"
+            label="New bidders joined"
+            value={8}
+          />
+        </div>
       </div>
     </div>
   );
