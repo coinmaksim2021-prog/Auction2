@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const mainCollectionRarity = [
-  { name: 'FOMO GOLD', chance: 0.2, count: 9, color: 'bg-yellow-500' },
-  { name: 'Legendary', chance: 1, count: 44, color: 'bg-orange-500' },
-  { name: 'Epic', chance: 10, count: 444, color: 'bg-purple-500' },
-  { name: 'Rare', chance: 25, count: 1111, color: 'bg-blue-500' },
-  { name: 'Uncommon', chance: 63.8, count: 2836, color: 'bg-green-500' }
+  { name: 'FOMO GOLD', chance: 0.2, count: 9, intensity: 'from-purple-300 to-purple-400' },
+  { name: 'Legendary', chance: 1, count: 44, intensity: 'from-purple-400 to-purple-500' },
+  { name: 'Epic', chance: 10, count: 444, intensity: 'from-purple-500 to-purple-600' },
+  { name: 'Rare', chance: 25, count: 1111, intensity: 'from-purple-600 to-purple-700' },
+  { name: 'Uncommon', chance: 63.8, count: 2836, intensity: 'from-purple-700 to-purple-800' }
 ];
 
 const bidRanges = [
-  { range: '< 500 USDC', bids: 57, percent: 35, color: 'from-emerald-400 to-emerald-600' },
-  { range: '500–1000 USDC', bids: 45, percent: 28, color: 'from-blue-400 to-blue-600' },
-  { range: '1000–2000 USDC', bids: 23, percent: 22, color: 'from-purple-400 to-purple-600' },
-  { range: '> 2000 USDC', bids: 12, percent: 15, color: 'from-orange-400 to-orange-600' }
+  { range: '< 500 USDC', bids: 57, percent: 35, intensity: 'from-emerald-300 to-emerald-400' },
+  { range: '500–1000 USDC', bids: 45, percent: 28, intensity: 'from-emerald-400 to-emerald-500' },
+  { range: '1000–2000 USDC', bids: 23, percent: 22, intensity: 'from-emerald-500 to-emerald-600' },
+  { range: '> 2000 USDC', bids: 12, percent: 15, intensity: 'from-emerald-600 to-emerald-700' }
 ];
 
-const RaritySection = () => {
-  // Для тестирования: true = скрыто (за час до окончания), false = показано
-  const [isBlindModeHidden, setIsBlindModeHidden] = useState(false);
-  
-  // В будущем это будет расчитываться от таймера:
-  // const isBlindModeHidden = timeLeft.days === 0 && timeLeft.hours === 0;
+const RaritySection = ({ timeLeft }) => {
+  // Логика скрытия: за час до окончания (days = 0, hours = 0)
+  const isBlindModeHidden = timeLeft.days === 0 && timeLeft.hours === 0;
 
   return (
     <div className="grid grid-cols-2 gap-6">
@@ -30,14 +27,14 @@ const RaritySection = () => {
         <div className="space-y-3">
           {mainCollectionRarity.map((item, i) => (
             <div key={i} className="flex items-center gap-3">
-              <div className={`w-3 h-3 rounded-full ${item.color}`}></div>
+              <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${item.intensity}`}></div>
               <div className="flex-1">
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-sm font-medium text-gray-900">{item.name}</span>
                   <span className="text-xs text-gray-500">{item.chance}% ({item.count})</span>
                 </div>
                 <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                  <div className={`h-full ${item.color} rounded-full`} style={{ width: `${Math.min(item.chance * 1.5, 100)}%` }}></div>
+                  <div className={`h-full bg-gradient-to-r ${item.intensity} rounded-full`} style={{ width: `${Math.min(item.chance * 1.5, 100)}%` }}></div>
                 </div>
               </div>
             </div>
@@ -49,19 +46,9 @@ const RaritySection = () => {
       <div className="card relative">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-gray-900">Blind Mode Active</h3>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 px-2 py-1 bg-emerald-50 rounded-full">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-              <span className="text-xs font-medium text-emerald-600">Live</span>
-            </div>
-            {/* Toggle для тестирования */}
-            <button
-              onClick={() => setIsBlindModeHidden(!isBlindModeHidden)}
-              className="text-xs px-2 py-1 bg-gray-100 hover:bg-gray-200 rounded text-gray-600 transition-colors"
-              title="Переключить состояние (для тестирования)"
-            >
-              {isBlindModeHidden ? '👁️' : '👁️‍🗨️'}
-            </button>
+          <div className="flex items-center gap-2 px-2 py-1 bg-emerald-50 rounded-full">
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+            <span className="text-xs font-medium text-emerald-600">Live</span>
           </div>
         </div>
         
@@ -78,7 +65,7 @@ const RaritySection = () => {
                   </div>
                   <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div 
-                      className={`h-full bg-gradient-to-r ${range.color} rounded-full transition-all duration-500`} 
+                      className={`h-full bg-gradient-to-r ${range.intensity} rounded-full transition-all duration-500`} 
                       style={{ width: `${range.percent}%` }}
                     ></div>
                   </div>
@@ -106,7 +93,7 @@ const RaritySection = () => {
                     </div>
                     <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                       <div 
-                        className={`h-full bg-gradient-to-r ${range.color} rounded-full`} 
+                        className={`h-full bg-gradient-to-r ${range.intensity} rounded-full`} 
                         style={{ width: `${range.percent}%` }}
                       ></div>
                     </div>
