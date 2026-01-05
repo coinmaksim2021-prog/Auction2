@@ -9,4 +9,6 @@ export { default as RecentActivity } from './RecentActivity';
 export { default as HowAuctionWorks } from './HowAuctionWorks';
 export { default as RaritySection } from './RaritySection';
 export { default as CollectionOverview } from './CollectionOverview';
+export { default as AuctionHeroSection } from './AuctionHeroSection';
+export { default as AuctionCTASection } from './AuctionCTASection';
 
