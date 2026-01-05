@@ -217,9 +217,20 @@ const UserEvolutionSection = () => {
   return (
     <section className="mt-12 mb-12 py-12 bg-gray-50 rounded-3xl">
       <div className="max-w-7xl mx-auto px-8">
-        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">FOMO Score Progression</h2>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+        <div className="text-center mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50 border border-purple-200 rounded-full mb-4">
+            <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            <span className="text-sm font-semibold text-purple-700">NFT Holders Only</span>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">FOMO Score Progression</h2>
+        </div>
+        <p className="text-center text-gray-600 mb-3 max-w-2xl mx-auto">
           Earn FOMO Score through engagement and unlock exclusive badges as you progress
+        </p>
+        <p className="text-center text-sm text-purple-600 font-medium mb-12 max-w-2xl mx-auto">
+          ⚠️ NFT ownership required to activate and progress through FOMO Score levels
         </p>
 
         {/* Progress Bar with Badges */}
