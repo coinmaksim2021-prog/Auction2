@@ -268,6 +268,94 @@ const ActivityHintToast = ({ hint }) => (
   </div>
 );
 
+// NFT Utility Section Component
+const NFTUtilitySection = () => (
+  <div className="mt-8">
+    <h2 className="text-2xl font-bold text-gray-900 mb-6">NFT Utility & Benefits</h2>
+    <div className="grid grid-cols-2 gap-6">
+      <div className="card">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3">XP & Leveling System</h3>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Earn XP through trading, holding, and community activities
+          </li>
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Level up to unlock exclusive benefits and features
+          </li>
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Higher levels provide better rarity multipliers
+          </li>
+        </ul>
+      </div>
+      
+      <div className="card">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3">Badge System</h3>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Collect 7 unique badges through various achievements
+          </li>
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Badges unlock special transformation paths
+          </li>
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Required for accessing Singularity NFT transformation
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div className="mt-6 grid grid-cols-3 gap-6">
+      <div className="card">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3">Trading Benefits</h3>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Reduced marketplace fees for holders
+          </li>
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Priority access to new drops
+          </li>
+        </ul>
+      </div>
+      
+      <div className="card">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3">Community Access</h3>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Exclusive Discord channels and events
+          </li>
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Voting rights on future developments
+          </li>
+        </ul>
+      </div>
+      
+      <div className="card">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3">Future Utility</h3>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Staking rewards and yield farming
+          </li>
+          <li className="text-sm text-gray-600 flex items-start gap-2">
+            <span className="text-emerald-500 mt-1">•</span>
+            Integration with upcoming FOMO ecosystem
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
 // Bid Modal Component
 const BidModal = ({ bidAmount, setBidAmount, onClose, onConfirm }) => {
   const quickBids = [
