@@ -153,6 +153,9 @@ function Auction() {
 
         {/* FOMO Universe Section */}
         <FOMOUniverseSection />
+
+        {/* NFT Box Collection Section */}
+        <NFTBoxCollectionSection />
       </div>
 
       {/* Activity Hint Toast */}
