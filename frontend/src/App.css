@@ -39,6 +39,25 @@ input[type="number"] {
   animation: pulse-scale 2s ease-in-out infinite;
 }
 
+/* Infinite horizontal scroll animation for NFT boxes */
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-infinite {
+  animation: scroll-infinite 30s linear infinite;
+}
+
+.pause-animation:hover {
+  animation-play-state: paused;
+}
+
+
 
 /* Gradient Buttons */
 .btn-primary {
