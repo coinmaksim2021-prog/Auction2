@@ -9,10 +9,10 @@ const mainCollectionRarity = [
 ];
 
 const bidRanges = [
-  { range: '< 500 USDC', bids: 57, percent: 35 },
-  { range: '500–1000 USDC', bids: 45, percent: 28 },
-  { range: '1000–2000 USDC', bids: 23, percent: 22 },
-  { range: '> 2000 USDC', bids: 12, percent: 15 }
+  { range: '<500', bids: 57, percent: 35 },
+  { range: '500-1K', bids: 45, percent: 28 },
+  { range: '1K-2K', bids: 23, percent: 22 },
+  { range: '>2K', bids: 12, percent: 15 }
 ];
 
 const RaritySection = () => {
