@@ -59,7 +59,7 @@ const ActivityItem = ({ icon, label, value }) => {
       onMouseLeave={() => setShowTooltip(false)}
     >
       {icons[icon]}
-      <span className="text-lg font-bold text-gray-900 tabular-nums">{value}</span>
+      <span className="text-lg font-bold text-blue-600 tabular-nums">{value}</span>
       
       {showTooltip && (
         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-xl whitespace-nowrap z-10 shadow-lg">
