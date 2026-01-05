@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AuctionChart = ({ ogTrailblazers, totalBids, participants }) => {
+  const [showOgTooltip, setShowOgTooltip] = useState(false);
+  
   return (
     <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
       <div className="flex items-center justify-between mb-4">
