@@ -105,8 +105,13 @@ function Auction() {
       />
 
       <div className="relative max-w-7xl mx-auto px-4 py-8">
-        {/* Header with Timer */}
-        <AuctionTimer timeLeft={timeLeft} />
+        {/* Hero Section with Timer */}
+        <AuctionHeroSection 
+          timeLeft={timeLeft}
+          totalBids={totalBids}
+          participants={participants}
+          onPlaceBid={handlePlaceBid}
+        />
 
         {/* Main Grid */}
         <div className="grid grid-cols-3 gap-6 items-start">
@@ -118,12 +123,14 @@ function Auction() {
               participants={participants}
             />
             <RecentActivity />
-            <HowAuctionWorks />
+            <div id="how-it-works">
+              <HowAuctionWorks />
+            </div>
             <RaritySection timeLeft={timeLeft} />
           </div>
 
           {/* Right Column */}
-          <div className="col-span-1 space-y-6">
+          <div className="col-span-1 space-y-6" data-section="place-bid">
             <PlaceBidPanel 
               currentBid={currentBid}
               totalBids={totalBids}
@@ -140,11 +147,8 @@ function Auction() {
           </div>
         </div>
 
-        {/* Last Chance Section */}
-        <LastChanceSection 
-          timeLeft={timeLeft}
-          onPlaceBid={handlePlaceBid}
-        />
+        {/* NFT Box Collection Section - Show what's being sold */}
+        <NFTBoxCollectionSection />
 
         {/* NFT Utility Section */}
         <NFTUtilitySection />
@@ -155,8 +159,11 @@ function Auction() {
         {/* FOMO Universe Section */}
         <FOMOUniverseSection />
 
-        {/* NFT Box Collection Section */}
-        <NFTBoxCollectionSection />
+        {/* Final CTA Section */}
+        <AuctionCTASection 
+          timeLeft={timeLeft}
+          onPlaceBid={handlePlaceBid}
+        />
       </div>
 
       {/* Activity Hint Toast */}
