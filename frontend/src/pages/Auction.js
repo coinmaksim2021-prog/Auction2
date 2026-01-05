@@ -145,6 +145,9 @@ function Auction() {
           onPlaceBid={handlePlaceBid}
         />
 
+        {/* NFT Utility Section */}
+        <NFTUtilitySection />
+
         {/* FOMO Universe Section */}
         <FOMOUniverseSection />
       </div>
