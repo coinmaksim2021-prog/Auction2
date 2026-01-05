@@ -1,34 +1,486 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Hide number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Shimmer animation for rarity bars */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
-.App-link {
-    color: #61dafb;
+.animate-shimmer {
+  animation: shimmer 3s infinite;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Gradient Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
 }
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #111827 0%, #000000 100%);
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: #1F2937;
+  font-weight: 500;
+  padding: 12px 32px;
+  border-radius: 12px;
+  border: 2px solid #E5E7EB;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.btn-secondary:hover {
+  background: #F9FAFB;
+  border-color: #10B981;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #6B7280;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn-outline:hover {
+  border-color: #10B981;
+  background: rgba(16, 185, 129, 0.05);
+  color: #1F2937;
+}
+
+/* Cards */
+.card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #D1D5DB;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-stats {
+  background: linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%);
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.card-stats:hover {
+  border-color: #D1D5DB;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background: #E5E7EB;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 12px;
+  position: relative;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #10B981 0%, #059669 100%);
+  height: 100%;
+  transition: width 0.8s ease;
+  border-radius: 999px;
+}
+
+/* NFT Card */
+.nft-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+  transition: all 0.3s ease;
+  background: #FFFFFF;
+}
+
+.nft-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: #D1D5DB;
+}
+
+.nft-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* Badge */
+.badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-green {
+  background: #DCFCE7;
+  color: #166534;
+}
+
+.badge-red {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.badge-blue {
+  background: #DBEAFE;
+  color: #1E40AF;
+}
+
+.badge-gray {
+  background: #F3F4F6;
+  color: #374151;
+}
+
+/* Live Indicator */
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #DCFCE7;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #166534;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Chart Container */
+.chart-container {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 24px;
+  min-height: 400px;
+}
+
+/* Input Fields */
+.input-field {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background: #FFFFFF;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #10B981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 13px;
+  color: #6B7280;
+  border-bottom: 2px solid #E5E7EB;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.data-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #F3F4F6;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.data-table tr:hover {
+  background: #F9FAFB;
+}
+
+/* Floating Animation Background */
+.floating-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.03;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+}
+
+.shape:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  width: 200px;
+  height: 200px;
+  animation-delay: 1s;
+}
+
+.shape:nth-child(3) {
+  top: 80%;
+  left: 20%;
+  width: 120px;
+  height: 120px;
+  animation-delay: 2s;
+}
+
+
+/* ==================== HERO ANIMATED BACKGROUND ==================== */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: blobFloat 20s ease-in-out infinite;
+}
+
+.blob-1 { 
+  top: 10%; 
+  left: 5%; 
+  width: 400px; 
+  height: 400px; 
+  background: rgba(16, 185, 129, 0.15); 
+}
+
+.blob-2 { 
+  top: 30%; 
+  right: 10%; 
+  width: 500px; 
+  height: 500px; 
+  background: rgba(20, 184, 166, 0.1); 
+  animation-delay: -5s; 
+}
+
+.blob-3 { 
+  bottom: 10%; 
+  left: 30%; 
+  width: 350px; 
+  height: 350px; 
+  background: rgba(6, 182, 212, 0.1); 
+  animation-delay: -10s; 
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(20px, -30px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(30px, 10px) scale(1.02); }
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+/* ==================== CUSTOM CURSOR TRAIL ==================== */
+.cursor-trail-dot {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.8) 0%, rgba(16, 185, 129, 0.4) 50%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  box-shadow: 
+    0 0 20px rgba(16, 185, 129, 0.6),
+    0 0 40px rgba(16, 185, 129, 0.3);
+  animation: trailFade 0.6s ease-out forwards;
+  filter: blur(2px);
+}
+
+@keyframes trailFade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+/* ==================== BUTTON HOVER ANIMATIONS ==================== */
+.btn-hover-lift {
+  transition: all 0.3s ease;
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-hover-green:hover {
+  background: linear-gradient(to right, #10b981, #059669) !important;
+  color: white !important;
+}
+
+.btn-text-green:hover {
+  color: #10b981 !important;
+}
+
+/* White buttons - ONLY text green on hover, NO border color change */
+.bg-white.border:hover,
+.bg-white.border-2:hover,
+button.bg-white:hover,
+a.bg-white:hover {
+  color: #10b981 !important;
+  border-color: #d1d5db !important;
+}
+
+.btn-secondary:hover {
+  background: #F9FAFB;
+  border-color: #d1d5db !important;
+  color: #10b981 !important;
+  transform: translateY(-2px);
+}
+
+/* Card hover animations */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-stats {
+  transition: all 0.3s ease;
+}
+
+.card-stats:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  border-color: #10b981;
+}
+
+/* Stats number animation on hover */
+.stat-number {
+  transition: all 0.3s ease;
+}
+
+.card-stats:hover .stat-number {
+  color: #10b981;
+  transform: scale(1.05);
+}
+
+
+/* About section with animated background */
+.about-section-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stat Number Animation */
+.stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1F2937 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* Scrollbar hide utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* CompactStats animations */
+@keyframes gradient-shift { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.8; } }
+.animate-gradient-shift { animation: gradient-shift 3s ease-in-out infinite; }
+@keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+.shimmer-animation { animation: shimmer 2s ease-in-out infinite; }
+@keyframes progress-stripes { 0% { background-position: 0 0; } 100% { background-position: 40px 0; } }
+.progress-stripes { background-image: linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1) 75%, transparent 75%, transparent); background-size: 40px 40px; animation: progress-stripes 1s linear infinite; }
+@keyframes flame-wave-1 { 0%, 100% { d: path("M0,100 Q50,60 100,70 T200,50 T300,65 T400,55 L400,100 Z"); } 50% { d: path("M0,100 Q40,70 90,65 T190,55 T290,60 T400,50 L400,100 Z"); } }
+@keyframes flame-wave-2 { 0%, 100% { d: path("M0,100 Q30,75 80,80 T180,60 T280,75 T400,65 L400,100 Z"); } 50% { d: path("M0,100 Q40,70 90,75 T190,65 T290,70 T400,60 L400,100 Z"); } }
+.flame-path-1 { animation: flame-wave-1 3s ease-in-out infinite; }
+.flame-path-2 { animation: flame-wave-2 2.5s ease-in-out infinite; }
+@keyframes ember-float { 0% { transform: translateY(0) scale(1); opacity: 0.8; } 100% { transform: translateY(-60px) scale(0); opacity: 0; } }
+.ember-particle { animation: ember-float 2s ease-out infinite; }
+@keyframes pulse-slow { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+.animate-pulse-slow { animation: pulse-slow 2s ease-in-out infinite; }
