@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
 import {
-  AuctionTimer,
   AuctionChart,
   PlaceBidPanel,
   GamificationMechanics,
@@ -10,7 +9,9 @@ import {
   RecentActivity,
   HowAuctionWorks,
   RaritySection,
-  CollectionOverview
+  CollectionOverview,
+  AuctionHeroSection,
+  AuctionCTASection
 } from '../components/auction';
 
 function Auction() {
