@@ -22,14 +22,16 @@ const AuctionChart = ({ ogTrailblazers, totalBids, participants }) => {
             <span className="text-xs font-semibold text-purple-600">OG TRAILBLAZER</span>
             <span className="text-sm font-bold text-purple-700">{ogTrailblazers}/100</span>
             
-            {/* Info icon */}
-            <svg className="w-3.5 h-3.5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            {/* Info icon - only show if not yet 100 */}
+            {ogTrailblazers < 100 && (
+              <svg className="w-3.5 h-3.5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )}
             
-            {/* Tooltip */}
-            {showOgTooltip && (
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-4 py-2.5 bg-gray-900 text-white text-xs rounded-xl whitespace-nowrap z-10 shadow-lg max-w-xs">
+            {/* Tooltip - only show if not yet 100 */}
+            {showOgTooltip && ogTrailblazers < 100 && (
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-4 py-2.5 bg-gray-900 text-white text-xs rounded-xl z-10 shadow-lg w-56 text-center">
                 First 100 auction participants get OG Trailblazer status with exclusive benefits
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-[-4px] border-4 border-transparent border-b-gray-900"></div>
               </div>
