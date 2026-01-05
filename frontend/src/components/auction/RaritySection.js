@@ -51,12 +51,14 @@ const RaritySection = () => {
         <p className="text-sm text-gray-600 mb-4">Bid amounts hidden. Only ranges visible.</p>
         <div className="space-y-3">
           {bidRanges.map((range, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <span className="text-sm text-gray-700 w-32 whitespace-nowrap">{range.range}</span>
-              <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div key={i}>
+              <div className="flex justify-between items-center mb-1.5">
+                <span className="text-sm text-gray-700">{range.range}</span>
+                <span className="text-xs text-gray-500">{range.bids} bids</span>
+              </div>
+              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div className="h-full bg-gray-400 rounded-full" style={{ width: `${range.percent}%` }}></div>
               </div>
-              <span className="text-xs text-gray-500 w-12 text-right">{range.bids} bids</span>
             </div>
           ))}
         </div>
