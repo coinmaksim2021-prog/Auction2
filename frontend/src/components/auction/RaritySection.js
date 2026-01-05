@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const mainCollectionRarity = [
   { name: 'FOMO GOLD', chance: 0.2, count: 9, color: 'bg-yellow-500' },
@@ -9,13 +9,19 @@ const mainCollectionRarity = [
 ];
 
 const bidRanges = [
-  { range: '< 500 USDC', bids: 57, percent: 35 },
-  { range: '500–1000 USDC', bids: 45, percent: 28 },
-  { range: '1000–2000 USDC', bids: 23, percent: 22 },
-  { range: '> 2000 USDC', bids: 12, percent: 15 }
+  { range: '< 500 USDC', bids: 57, percent: 35, color: 'from-emerald-400 to-emerald-600' },
+  { range: '500–1000 USDC', bids: 45, percent: 28, color: 'from-blue-400 to-blue-600' },
+  { range: '1000–2000 USDC', bids: 23, percent: 22, color: 'from-purple-400 to-purple-600' },
+  { range: '> 2000 USDC', bids: 12, percent: 15, color: 'from-orange-400 to-orange-600' }
 ];
 
 const RaritySection = () => {
+  // Для тестирования: true = скрыто (за час до окончания), false = показано
+  const [isBlindModeHidden, setIsBlindModeHidden] = useState(false);
+  
+  // В будущем это будет расчитываться от таймера:
+  // const isBlindModeHidden = timeLeft.days === 0 && timeLeft.hours === 0;
+
   return (
     <div className="grid grid-cols-2 gap-6">
       {/* Main Collection Rarity */}
@@ -40,28 +46,87 @@ const RaritySection = () => {
       </div>
 
       {/* Blind Mode Active */}
-      <div className="card">
+      <div className="card relative">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-gray-900">Blind Mode Active</h3>
-          <div className="flex items-center gap-2 px-2 py-1 bg-emerald-50 rounded-full">
-            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-            <span className="text-xs font-medium text-emerald-600">Live</span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 px-2 py-1 bg-emerald-50 rounded-full">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+              <span className="text-xs font-medium text-emerald-600">Live</span>
+            </div>
+            {/* Toggle для тестирования */}
+            <button
+              onClick={() => setIsBlindModeHidden(!isBlindModeHidden)}
+              className="text-xs px-2 py-1 bg-gray-100 hover:bg-gray-200 rounded text-gray-600 transition-colors"
+              title="Переключить состояние (для тестирования)"
+            >
+              {isBlindModeHidden ? '👁️' : '👁️‍🗨️'}
+            </button>
           </div>
         </div>
-        <p className="text-sm text-gray-600 mb-4">Bid amounts hidden. Only ranges visible.</p>
-        <div className="space-y-3">
-          {bidRanges.map((range, i) => (
-            <div key={i}>
-              <div className="flex justify-between items-center mb-1.5">
-                <span className="text-sm text-gray-700">{range.range}</span>
-                <span className="text-xs text-gray-500">{range.bids} bids</span>
+        
+        {!isBlindModeHidden ? (
+          // Открытое состояние - показываем диапазоны
+          <>
+            <p className="text-sm text-gray-600 mb-4">Bid amounts hidden. Only ranges visible.</p>
+            <div className="space-y-3">
+              {bidRanges.map((range, i) => (
+                <div key={i}>
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-sm font-medium text-gray-900">{range.range}</span>
+                    <span className="text-xs font-semibold text-gray-700">{range.bids} bids</span>
+                  </div>
+                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full bg-gradient-to-r ${range.color} rounded-full transition-all duration-500`} 
+                      style={{ width: `${range.percent}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          // Скрытое состояние - за час до окончания
+          <>
+            <p className="text-sm text-red-600 font-medium mb-4 flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Final hour - All bid data hidden
+            </p>
+            <div className="space-y-3 relative">
+              {/* Заблюренный контент */}
+              <div className="filter blur-md select-none pointer-events-none">
+                {bidRanges.map((range, i) => (
+                  <div key={i} className="mb-3">
+                    <div className="flex justify-between items-center mb-1.5">
+                      <span className="text-sm font-medium text-gray-900">{range.range}</span>
+                      <span className="text-xs font-semibold text-gray-700">{range.bids} bids</span>
+                    </div>
+                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full bg-gradient-to-r ${range.color} rounded-full`} 
+                        style={{ width: `${range.percent}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-gray-400 rounded-full" style={{ width: `${range.percent}%` }}></div>
+              
+              {/* Оверлей с иконкой */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm rounded-lg">
+                <svg className="w-16 h-16 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                </svg>
+                <p className="text-sm font-semibold text-gray-700 mb-1">Blind Bidding Active</p>
+                <p className="text-xs text-gray-500 text-center px-4">
+                  All bid ranges hidden for final hour.<br/>Place your bid blind!
+                </p>
               </div>
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </div>
     </div>
   );
