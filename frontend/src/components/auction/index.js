@@ -11,4 +11,11 @@ export { default as RaritySection } from './RaritySection';
 export { default as CollectionOverview } from './CollectionOverview';
 export { default as AuctionHeroSection } from './AuctionHeroSection';
 export { default as AuctionCTASection } from './AuctionCTASection';
+export { default as LastChanceSection } from './LastChanceSection';
+export { default as UserEvolutionSection } from './UserEvolutionSection';
+export { default as FOMOUniverseSection } from './FOMOUniverseSection';
+export { default as NFTUtilitySection } from './NFTUtilitySection';
+export { default as BidModal } from './BidModal';
+export { default as ActivityHintToast } from './ActivityHintToast';
+export { default as NFTBoxCollectionSection } from './NFTBoxCollectionSection';
 
