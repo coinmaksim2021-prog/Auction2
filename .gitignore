@@ -55,3 +55,7 @@ Thumbs.db
 *.tmp
 *.temp
 test_result.md
+-e 
+# Environment files
+*.env
+*.env.*
