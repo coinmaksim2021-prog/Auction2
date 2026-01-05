@@ -150,6 +150,12 @@ function Auction() {
         {/* NFT Box Collection Section - Show what's being sold */}
         <NFTBoxCollectionSection />
 
+        {/* Last Chance - Last Hero Section */}
+        <LastChanceSection 
+          timeLeft={timeLeft}
+          onPlaceBid={handlePlaceBid}
+        />
+
         {/* NFT Utility Section */}
         <NFTUtilitySection />
 
