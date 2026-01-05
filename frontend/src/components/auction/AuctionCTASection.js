@@ -24,13 +24,13 @@ const AuctionCTASection = ({ timeLeft, onPlaceBid }) => {
           Secure your spot in the FOMO NFT collection. Higher bids unlock rarer NFTs with better rewards and multipliers.
         </p>
 
-        {/* Compact Timer */}
+        {/* Compact Timer - same font as hero */}
         <div className="inline-flex items-center gap-3 bg-gray-900 text-white px-6 py-3 rounded-xl mb-8">
           <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span className="font-mono text-lg">
-            {String(timeLeft.days).padStart(2, '0')}d : {String(timeLeft.hours).padStart(2, '0')}h : {String(timeLeft.minutes).padStart(2, '0')}m : {String(timeLeft.seconds).padStart(2, '0')}s
+          <span className="text-lg font-bold tracking-tight tabular-nums">
+            {String(timeLeft.days).padStart(2, '0')}d : {String(timeLeft.hours).padStart(2, '0')}h : {String(timeLeft.minutes).padStart(2, '0')}m : <span className="text-emerald-400">{String(timeLeft.seconds).padStart(2, '0')}s</span>
           </span>
           <span className="text-gray-400 text-sm">remaining</span>
         </div>
