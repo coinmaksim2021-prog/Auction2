@@ -202,118 +202,92 @@ const LastChanceSection = ({ timeLeft, onPlaceBid }) => (
 
 // User Evolution Section Component
 const UserEvolutionSection = () => {
-  const [activeTab, setActiveTab] = useState('levels');
-  
-  const xpLevels = [
-    { level: 1, name: 'Novice', xp: 0, color: 'from-gray-400 to-gray-500' },
-    { level: 2, name: 'Explorer', xp: 100, color: 'from-blue-400 to-blue-500' },
-    { level: 3, name: 'Collector', xp: 250, color: 'from-cyan-400 to-cyan-500' },
-    { level: 4, name: 'Master', xp: 500, color: 'from-purple-400 to-purple-500' },
-    { level: 5, name: 'Legend', xp: 800, color: 'from-orange-400 to-orange-500' }
-  ];
-
   const fomoScoreBadges = [
-    { name: 'Stellar Awakening', range: '0-199', description: "You've taken your first steps into the FOMO universe.", color: 'from-slate-400 to-slate-500' },
-    { name: 'Cosmic Explorer', range: '200-399', description: "You're expanding your presence and exploring the ecosystem.", color: 'from-blue-400 to-blue-500' },
-    { name: 'Galactic Navigator', range: '400-599', description: "You're becoming a reliable contributor in the community.", color: 'from-cyan-400 to-cyan-500' },
-    { name: 'Celestial Master', range: '600-799', description: "Your impact is felt across the galaxy. Others trust your moves.", color: 'from-purple-400 to-purple-500' },
-    { name: 'Astral Sage', range: '800-899', description: "You are now a recognized guide in the FOMO cosmos.", color: 'from-orange-400 to-orange-500' },
-    { name: 'Universal Enlightenment', range: '900-1000', description: "You've reached the ultimate level. A symbol of cosmic influence.", color: 'from-amber-400 to-amber-500' }
+    { name: 'Stellar Awakening', range: '0-199', score: 0, description: "First steps into the FOMO universe", color: 'from-gray-400 to-gray-500' },
+    { name: 'Cosmic Explorer', range: '200-399', score: 200, description: "Expanding presence and exploring", color: 'from-blue-400 to-blue-500' },
+    { name: 'Galactic Navigator', range: '400-599', score: 400, description: "Reliable contributor in community", color: 'from-cyan-400 to-cyan-500' },
+    { name: 'Celestial Master', range: '600-799', score: 600, description: "Impact felt across the galaxy", color: 'from-purple-400 to-purple-500' },
+    { name: 'Astral Sage', range: '800-899', score: 800, description: "Recognized guide in FOMO cosmos", color: 'from-orange-400 to-orange-500' },
+    { name: 'Universal Enlightenment', range: '900-1000', score: 900, description: "Ultimate level, cosmic influence", color: 'from-amber-400 to-amber-500' }
   ];
 
+  // Пример: текущий прогресс пользователя (для демонстрации)
+  const currentScore = 350; // Пользователь между Cosmic Explorer и Galactic Navigator
+  
   return (
-    <section className="mt-12 mb-12 py-12">
-      <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">User Evolution System</h2>
-      <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-        Progress through levels, earn XP, and unlock exclusive badges as you engage with the FOMO ecosystem
-      </p>
-
-      {/* Tab Navigation */}
-      <div className="flex justify-center gap-4 mb-8">
-        <button
-          onClick={() => setActiveTab('levels')}
-          className={`px-6 py-2.5 rounded-xl font-semibold transition-all ${
-            activeTab === 'levels'
-              ? 'bg-gray-900 text-white shadow-lg'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          XP Levels
-        </button>
-        <button
-          onClick={() => setActiveTab('badges')}
-          className={`px-6 py-2.5 rounded-xl font-semibold transition-all ${
-            activeTab === 'badges'
-              ? 'bg-gray-900 text-white shadow-lg'
-              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-          }`}
-        >
-          FOMO Score Badges
-        </button>
-      </div>
-
-      {/* XP Levels Tab */}
-      {activeTab === 'levels' && (
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 max-w-6xl mx-auto">
-          {xpLevels.map((lvl, index) => (
-            <div key={index} className="card hover:shadow-lg transition-shadow">
-              <div className="text-center">
-                {/* Level Badge */}
-                <div className={`w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br ${lvl.color} flex items-center justify-center shadow-lg`}>
-                  <span className="text-2xl font-bold text-white">Lv. {lvl.level}</span>
-                </div>
-                
-                {/* Name */}
-                <h4 className="text-base font-bold text-gray-900 mb-2">{lvl.name}</h4>
-                
-                {/* XP Requirement */}
-                <div className="px-3 py-1.5 bg-gray-50 rounded-lg">
-                  <p className="text-xs text-gray-500 mb-0.5">XP Required</p>
-                  <p className="text-lg font-bold text-gray-900">{lvl.xp.toLocaleString()}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* FOMO Score Badges Tab */}
-      {activeTab === 'badges' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {fomoScoreBadges.map((badge, index) => (
-            <div key={index} className="card hover:shadow-lg transition-shadow">
-              {/* Badge Icon */}
-              <div className={`w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br ${badge.color} flex items-center justify-center shadow-lg`}>
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                </svg>
-              </div>
-              
-              {/* Badge Info */}
-              <div className="text-center">
-                <h4 className="text-lg font-bold text-gray-900 mb-1">{badge.name}</h4>
-                <p className="text-sm font-semibold text-gray-600 mb-3">Score: {badge.range}</p>
-                <p className="text-sm text-gray-600">{badge.description}</p>
-              </div>
-              
-              {/* Progress Bar (placeholder) */}
-              <div className="mt-4">
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div className={`h-full bg-gradient-to-r ${badge.color} rounded-full transition-all duration-500`} style={{ width: '0%' }}></div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Info Text */}
-      <div className="mt-8 text-center">
-        <p className="text-sm text-gray-500">
-          {activeTab === 'levels' 
-            ? 'Earn XP through auctions, community engagement, and completing missions. Higher levels unlock exclusive features and benefits.'
-            : 'FOMO Score reflects your overall contribution and influence in the ecosystem. Collect badges to showcase your achievements.'}
+    <section className="mt-12 mb-12 py-12 bg-gray-50 rounded-3xl">
+      <div className="max-w-7xl mx-auto px-8">
+        <h2 className="text-3xl font-bold text-center mb-4 text-gray-900">FOMO Score Progression</h2>
+        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          Earn FOMO Score through engagement and unlock exclusive badges as you progress
         </p>
+
+        {/* Progress Bar with Badges */}
+        <div className="relative">
+          {/* Horizontal Progress Line */}
+          <div className="absolute top-10 left-0 right-0 h-2 bg-gray-200 rounded-full">
+            <div 
+              className="h-full bg-gradient-to-r from-gray-400 via-blue-400 to-cyan-500 rounded-full transition-all duration-1000"
+              style={{ width: `${(currentScore / 1000) * 100}%` }}
+            ></div>
+          </div>
+
+          {/* Badges */}
+          <div className="relative grid grid-cols-6 gap-4">
+            {fomoScoreBadges.map((badge, index) => {
+              const isAchieved = currentScore >= badge.score;
+              const isCurrent = currentScore >= badge.score && (index === fomoScoreBadges.length - 1 || currentScore < fomoScoreBadges[index + 1].score);
+              
+              return (
+                <div key={index} className="flex flex-col items-center">
+                  {/* Badge Circle */}
+                  <div className={`relative z-10 w-20 h-20 rounded-full flex items-center justify-center transition-all duration-500 ${
+                    isAchieved 
+                      ? `bg-gradient-to-br ${badge.color} shadow-lg` 
+                      : 'bg-gray-200 border-2 border-gray-300'
+                  } ${isCurrent ? 'ring-4 ring-blue-200 scale-110' : ''}`}>
+                    <svg className={`w-10 h-10 ${isAchieved ? 'text-white' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                  </div>
+                  
+                  {/* Badge Info */}
+                  <div className="mt-4 text-center">
+                    <p className={`text-sm font-bold mb-1 ${isAchieved ? 'text-gray-900' : 'text-gray-400'}`}>
+                      {badge.name}
+                    </p>
+                    <p className={`text-xs font-semibold mb-1 ${isAchieved ? 'text-gray-600' : 'text-gray-400'}`}>
+                      {badge.range}
+                    </p>
+                    <p className={`text-xs ${isAchieved ? 'text-gray-500' : 'text-gray-400'}`}>
+                      {badge.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Current Score Display */}
+        <div className="mt-12 text-center">
+          <p className="text-2xl font-bold text-gray-900 mb-2">
+            Current Score: <span className="text-blue-600">{currentScore}</span> / 1000
+          </p>
+          <p className="text-sm text-gray-600">
+            {currentScore < 200 
+              ? `${200 - currentScore} more points to reach Cosmic Explorer`
+              : currentScore < 400 
+              ? `${400 - currentScore} more points to reach Galactic Navigator`
+              : currentScore < 600
+              ? `${600 - currentScore} more points to reach Celestial Master`
+              : currentScore < 800
+              ? `${800 - currentScore} more points to reach Astral Sage`
+              : currentScore < 900
+              ? `${900 - currentScore} more points to reach Universal Enlightenment`
+              : 'Maximum level reached! 🎉'}
+          </p>
+        </div>
       </div>
     </section>
   );
