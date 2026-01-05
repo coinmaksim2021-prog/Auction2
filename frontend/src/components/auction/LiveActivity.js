@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
   return (
-    <div className="card mb-12">
-      <div className="flex items-center justify-between">
+    <div className="card mb-0">
+      <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
           <h3 className="text-lg font-semibold text-gray-900">Live Activity</h3>
@@ -27,6 +27,11 @@ const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
           />
         </div>
       </div>
+      
+      {/* Description */}
+      <p className="text-sm text-gray-600 mt-3 pt-3 border-t border-gray-100">
+        Real-time auction engagement metrics updated every 30 seconds
+      </p>
     </div>
   );
 };
