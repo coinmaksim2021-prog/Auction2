@@ -118,7 +118,7 @@ function Auction() {
             />
             <RecentActivity />
             <HowAuctionWorks />
-            <RaritySection />
+            <RaritySection timeLeft={timeLeft} />
           </div>
 
           {/* Right Column */}
