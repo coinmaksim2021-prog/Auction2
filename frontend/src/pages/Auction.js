@@ -24,8 +24,8 @@ import {
 function Auction() {
   // Timer state
   const [timeLeft, setTimeLeft] = useState({
-    days: 2,
-    hours: 15,
+    days: 0,
+    hours: 0,
     minutes: 43,
     seconds: 25
   });
