@@ -20,8 +20,8 @@ const AuctionChart = ({ ogTrailblazers, totalBids, participants }) => {
         
         {/* Stats */}
         <div className="flex items-center gap-4 text-sm text-gray-600">
-          <span><span className="font-semibold text-gray-900">{totalBids}</span> total bids</span>
-          <span><span className="font-semibold text-gray-900">{participants}</span> participants</span>
+          <span><span className="font-bold text-emerald-600 tabular-nums">{totalBids}</span> total bids</span>
+          <span><span className="font-bold text-emerald-600 tabular-nums">{participants}</span> participants</span>
         </div>
       </div>
       
