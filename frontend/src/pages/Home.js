@@ -15,7 +15,7 @@ import {
   CTASection
 } from '../components/home';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://bid-platform-test.preview.emergentagent.com';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'https://bidding-platform-19.preview.emergentagent.com';
 
 function Home({ setCurrentPage }) {
   const [strategyState, setStrategyState] = useState(null);

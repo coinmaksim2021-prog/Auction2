@@ -28,7 +28,7 @@
 - ✅ Установлены все Node.js зависимости через `yarn`
 - ✅ Дополнительно установлен `framer-motion` для анимаций
 - ✅ Настроен `.env` файл:
-  - `REACT_APP_BACKEND_URL=https://auction-platform-15.preview.emergentagent.com`
+  - `REACT_APP_BACKEND_URL=https://bidding-platform-19.preview.emergentagent.com`
   - `WDS_SOCKET_PORT=443`
 - ✅ Frontend запущен на порту **3000**
 - ✅ Приложение компилируется без критических ошибок
@@ -48,7 +48,7 @@
 
 ## 🌐 Доступ к приложению
 
-**Основной URL:** https://auction-platform-15.preview.emergentagent.com
+**Основной URL:** https://bidding-platform-19.preview.emergentagent.com
 
 ### Страницы приложения:
 
@@ -81,7 +81,7 @@
 
 ## 🔌 API эндпоинты (работают)
 
-Базовый URL: `https://auction-platform-15.preview.emergentagent.com/api`
+Базовый URL: `https://bidding-platform-19.preview.emergentagent.com/api`
 
 ### Основные эндпоинты:
 - ✅ `GET /api/` - Health check
