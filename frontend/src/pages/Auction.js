@@ -526,4 +526,113 @@ const BidModal = ({ bidAmount, setBidAmount, onClose, onConfirm }) => {
   );
 };
 
+// NFT Box Collection Section Component with Infinite Scroll
+const NFTBoxCollectionSection = () => {
+  const nftBoxes = [
+    { id: '#001', rarity: 'Legendary', price: '2.5 ETH', image: '🎁' },
+    { id: '#024', rarity: 'Epic', price: '1.8 ETH', image: '🎁' },
+    { id: '#067', rarity: 'Rare', price: '1.2 ETH', image: '🎁' },
+    { id: '#135', rarity: 'Uncommon', price: '0.8 ETH', image: '🎁' },
+    { id: '#248', rarity: 'Epic', price: '1.9 ETH', image: '🎁' },
+    { id: '#312', rarity: 'Rare', price: '1.1 ETH', image: '🎁' },
+    { id: '#456', rarity: 'Legendary', price: '2.8 ETH', image: '🎁' },
+    { id: '#523', rarity: 'Uncommon', price: '0.7 ETH', image: '🎁' }
+  ];
+
+  // Duplicate для бесконечного скролла
+  const duplicatedBoxes = [...nftBoxes, ...nftBoxes];
+
+  const getRarityColor = (rarity) => {
+    switch (rarity) {
+      case 'Legendary': return 'from-orange-400 to-orange-600';
+      case 'Epic': return 'from-purple-400 to-purple-600';
+      case 'Rare': return 'from-blue-400 to-blue-600';
+      case 'Uncommon': return 'from-green-400 to-green-600';
+      default: return 'from-gray-400 to-gray-600';
+    }
+  };
+
+  return (
+    <section className="mt-12 mb-12 py-12">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Pre-Mint BOX Collection</h2>
+          <p className="text-gray-600 mb-2">666 Exclusive NFT Boxes • Available for Trading & Fusion</p>
+          <p className="text-sm text-gray-500">Previous collection now available on the open market</p>
+        </div>
+
+        {/* Infinite Scroll Container */}
+        <div className="relative overflow-hidden">
+          <div className="flex animate-scroll-infinite hover:pause-animation">
+            {duplicatedBoxes.map((box, index) => (
+              <div 
+                key={index}
+                className="flex-shrink-0 w-64 mx-3"
+              >
+                <div className="card hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                  {/* NFT Box Image */}
+                  <div className={`relative h-64 bg-gradient-to-br ${getRarityColor(box.rarity)} rounded-t-2xl flex items-center justify-center overflow-hidden`}>
+                    {/* Rarity Badge */}
+                    <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
+                      <span className="text-xs font-bold text-gray-900">{box.rarity}</span>
+                    </div>
+                    
+                    {/* Box ID */}
+                    <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/50 backdrop-blur-sm rounded-lg">
+                      <span className="text-xs font-mono font-semibold text-white">{box.id}</span>
+                    </div>
+                    
+                    {/* Box Icon */}
+                    <div className="text-8xl group-hover:scale-110 transition-transform duration-300">
+                      {box.image}
+                    </div>
+                  </div>
+                  
+                  {/* Info Section */}
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-sm">
+                        F
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900">FOMO Box</p>
+                        <p className="text-xs text-gray-500">Pre-Mint Collection</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-lg font-bold text-gray-900">{box.price}</p>
+                        <p className="text-xs text-gray-500">~$7,800</p>
+                      </div>
+                      <button className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                        <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Info Footer */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-600 mb-3">
+            These boxes can be fused together to mint NFTs from the main collection
+          </p>
+          <button className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-xl font-semibold hover:bg-black transition-all shadow-lg">
+            View Full Collection
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default Auction;
