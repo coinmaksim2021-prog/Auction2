@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
   return (
-    <div className="card mb-0">
+    <div className="card">
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
@@ -28,9 +28,8 @@ const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
         </div>
       </div>
       
-      {/* Description */}
-      <p className="text-sm text-gray-600 mt-3 pt-3 border-t border-gray-100">
-        Real-time auction engagement metrics updated every 30 seconds
+      <p className="text-xs text-gray-500 italic">
+        Real-time metrics. Updated every 30s.
       </p>
     </div>
   );
