@@ -42,7 +42,7 @@ const RaritySection = () => {
       {/* Blind Mode Active */}
       <div className="card">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-gray-900">Blind Mode Active</h3>
+          <h3 className="text-lg font-semibold text-gray-900">Blind Mode Active <span className="text-sm text-gray-500 font-normal">(USDC)</span></h3>
           <div className="flex items-center gap-2 px-2 py-1 bg-emerald-50 rounded-full">
             <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
             <span className="text-xs font-medium text-emerald-600">Live</span>
@@ -52,7 +52,7 @@ const RaritySection = () => {
         <div className="space-y-3">
           {bidRanges.map((range, i) => (
             <div key={i} className="flex items-center gap-3">
-              <span className="text-sm text-gray-700 w-24">{range.range}</span>
+              <span className="text-sm font-medium text-gray-700 w-20">{range.range}</span>
               <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div className="h-full bg-gray-400 rounded-full" style={{ width: `${range.percent}%` }}></div>
               </div>
