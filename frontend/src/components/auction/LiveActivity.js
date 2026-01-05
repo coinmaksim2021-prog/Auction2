@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
   return (
     <div className="card">
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-2 mb-3">
         <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
         <h3 className="text-lg font-semibold text-gray-900">Live Activity</h3>
       </div>
       
-      <div className="space-y-3">
+      <div className="flex items-center gap-4">
         <ActivityItem 
           icon="users"
           label="Users online now"
@@ -30,6 +30,8 @@ const LiveActivity = ({ onlineUsers, bidsLastHour }) => {
 };
 
 const ActivityItem = ({ icon, label, value }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  
   const icons = {
     users: (
       <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,12 +51,20 @@ const ActivityItem = ({ icon, label, value }) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
-      <div className="flex items-center gap-3">
-        {icons[icon]}
-        <span className="text-sm text-gray-600">{label}</span>
-      </div>
-      <span className="text-lg font-bold text-gray-900">{value}</span>
+    <div 
+      className="relative flex items-center gap-2 cursor-help"
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+    >
+      {icons[icon]}
+      <span className="text-xl font-bold text-gray-900 tabular-nums">{value}</span>
+      
+      {showTooltip && (
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap z-10 shadow-lg">
+          {label}
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900"></div>
+        </div>
+      )}
     </div>
   );
 };
